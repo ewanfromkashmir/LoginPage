@@ -14,5 +14,4 @@
     <Button alignment="BOTTOM_CENTER" mnemonicParsing="false" text="Submit" onAction="#onSubmitButtonClick" />
     <Button alignment="BOTTOM_LEFT" mnemonicParsing="false" text="Clear" onAction="#onClearButtonClick"/>
     <Button alignment="CENTER_RIGHT" mnemonicParsing="false" text="Cancel" onAction="#onCancelButtonClick" />
-    <Button fx:id="okayButton" alignment="CENTER" text="Okay"/>
 </VBox>
