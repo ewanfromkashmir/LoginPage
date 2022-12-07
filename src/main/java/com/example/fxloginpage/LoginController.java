@@ -54,21 +54,19 @@ public class LoginController
                     {
                         // Showing the incorrect alert, clearing passwordField and returning
                         incorrect.showAndWait();
-                        passwordField.setText("");
+                        clearPasswordField();
                         return;
                     }
 
                     // Case where the user has now exhausted all of their attempts to log in
                     else
                     {
-                        // Showing the locked alert and clearing both usernameField and passwordField
+                        // Showing the locked alert and clearing both fields
                         locked.showAndWait();
-                        usernameField.setText("");
-                        passwordField.setText("");
+                        clearFields();
 
-                        // Disabling usernameField and passwordField from being edited and returning
-                        usernameField.setEditable(false);
-                        passwordField.setEditable(false);
+                        // Disabling both fields and returning
+                        disableFields();
                         return;
                     }
                 }
@@ -79,7 +77,7 @@ public class LoginController
             {
                 // Showing the incorrect alert, clearing passwordField and returning
                 incorrect.showAndWait();
-                passwordField.setText("");
+                clearPasswordField();
                 return;
             }
         }
@@ -92,14 +90,35 @@ public class LoginController
     @FXML
     protected void onClearButtonClick()
     {
-        usernameField.setText("");
-        passwordField.setText("");
+        // Calling the clearFields function
+        clearFields();
     }
 
     @FXML
     protected void onCancelButtonClick()
     {
+        // Closing the window
         Platform.exit();
+    }
+
+    protected void clearPasswordField()
+    {
+        // Clearing passwordField by setting its text to ""
+        passwordField.setText("");
+    }
+
+    protected void clearFields()
+    {
+        // Clearing usernameField and passwordField by setting their text to ""
+        usernameField.setText("");
+        passwordField.setText("");
+    }
+
+    protected void disableFields()
+    {
+        // Disabling usernameField and passwordField by preventing them from being edited
+        usernameField.setEditable(false);
+        passwordField.setEditable(false);
     }
 
 }

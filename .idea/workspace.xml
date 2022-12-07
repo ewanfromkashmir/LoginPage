@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="62682286-04cf-4d66-a42e-9724769e1882" name="Changes" comment="Correctly implemented Cancel and Clear buttons to login page.">
+    <list default="true" id="62682286-04cf-4d66-a42e-9724769e1882" name="Changes" comment="Correctly implemented Submit button which can lock out the user if the incorrect credentials are entered too many times.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/fxloginpage/LoginApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/fxloginpage/LoginApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/fxloginpage/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/fxloginpage/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/fxloginpage/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/fxloginpage/hello-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +47,7 @@
       <updated>1669818254272</updated>
       <workItem from="1669818255477" duration="391000" />
       <workItem from="1669819046107" duration="5125000" />
-      <workItem from="1670353716298" duration="4188000" />
+      <workItem from="1670353716298" duration="6128000" />
     </task>
     <task id="LOCAL-00001" summary="Correctly implemented Cancel and Clear buttons to login page.">
       <created>1669903177092</created>
@@ -58,7 +56,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669903177092</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Correctly implemented Submit button which can lock out the user if the incorrect credentials are entered too many times.">
+      <created>1670371962509</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1670371962509</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -77,6 +82,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Correctly implemented Cancel and Clear buttons to login page." />
-    <option name="LAST_COMMIT_MESSAGE" value="Correctly implemented Cancel and Clear buttons to login page." />
+    <MESSAGE value="Correctly implemented Submit button which can lock out the user if the incorrect credentials are entered too many times." />
+    <option name="LAST_COMMIT_MESSAGE" value="Correctly implemented Submit button which can lock out the user if the incorrect credentials are entered too many times." />
   </component>
 </project>
