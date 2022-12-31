@@ -2,103 +2,127 @@ package com.example.fxloginpage;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
+import java.sql.*;
+
+import java.io.IOException;
 
 public class LoginController
 {
-    @FXML
-    private TextField usernameField;
-
-    @FXML
-    private PasswordField passwordField;
+    // Initialising usernameField TextField, passwordField PasswordField
+    @FXML private TextField usernameField;
+    @FXML private PasswordField passwordField;
 
     // Initialising integer attempts which tracks the number of attempts the user has remaining to log in
     int attempts = 3;
 
-    @FXML
-    protected void onSubmitButtonClick()
-    {
-        // Initialising username and password strings
-        // In future this may be altered to incorporate an array of usernames and passwords
-        String username = "admin";
-        String password = "PaSSword!!!";
+    // Initialising server URL, username and password as variables for use when connecting to database
+    static String serverURL = "jdbc:sqlserver://SQL8002.site4now.net;database=db_a8cc79_Ewahes";
+    static String serverUsername = "db_a8cc79_Ewahes_admin";
+    static String serverPassword = "Fr43yX52kE71";
 
-        // Declaring alerts correct, incorrect and locked which will be used to alert the user of the status of their log in attempt
+    @FXML protected void initialize()
+    {
+        setPrompts();
+    }
+
+    @FXML protected void onSubmitButtonClick() throws IOException, SQLException
+    {
+        // Initialising username and password strings based on user input
+        String username = usernameField.getText().toLowerCase();
+        String password = passwordField.getText();
+
+        // Declaring alerts correct, incorrect and locked which will be used to alert the user of the status of their login attempt
         Alert correct = new Alert(Alert.AlertType.INFORMATION, "Login successful.", ButtonType.OK);
         Alert incorrect = new Alert(Alert.AlertType.INFORMATION, "Username and/or password not recognised.", ButtonType.OK);
         Alert locked = new Alert(Alert.AlertType.INFORMATION, "System locked. Please contact an administrator.", ButtonType.OK);
 
-        // Case where the user still has an attempt or more remaining
+        // Case where the user has an attempt or more left to log in
         while (attempts > 0)
         {
-            // Case where the username "Admin" or equivalent is entered
-            // In future this may be expanded to check the input against an array of usernames
-            if (usernameField.getText().toLowerCase().equals(username))
+            // Case where the username entered can be found in the database i.e. a valid user
+            if (queryUsername(username))
             {
-                // Case where the correct password is entered
-                if (passwordField.getText().equals(password))
+                // Case where the username and password together can be found in the database i.e. a valid login
+                if (queryPassword(username, password))
                 {
-                    // Showing the correct alert and closing the window
+                    // Calling the switchToPage function to switch pages and displaying the correct alert
+                    switchToPage();
                     correct.showAndWait();
-                    Platform.exit();
                 }
 
-                // Case where the incorrect password is entered
                 else
                 {
-                    // Decrementing the attempts variable
                     attempts--;
 
-                    // Case where the user still has an attempt or more remaining
                     if (attempts > 0)
                     {
-                        // Showing the incorrect alert, clearing passwordField and returning
                         incorrect.showAndWait();
                         clearPasswordField();
-                        return;
                     }
 
-                    // Case where the user has now exhausted all of their attempts to log in
                     else
                     {
-                        // Showing the locked alert and clearing both fields
                         locked.showAndWait();
                         clearFields();
-
-                        // Disabling both fields and returning
                         disableFields();
-                        return;
                     }
+                    return;
                 }
             }
 
-            // Case where the username entered is not recognised
             else
             {
-                // Showing the incorrect alert, clearing passwordField and returning
                 incorrect.showAndWait();
                 clearPasswordField();
-                return;
             }
         }
-
-        // Case where the user has exhausted all of their attempts to log in
-        // Showing the locked alert once again
-        locked.showAndWait();
     }
 
-    @FXML
-    protected void onClearButtonClick()
+    @FXML protected void onClearButtonClick()
     {
         // Calling the clearFields function
         clearFields();
     }
 
-    @FXML
-    protected void onCancelButtonClick()
+    @FXML protected void onCancelButtonClick()
     {
         // Closing the window
         Platform.exit();
+    }
+
+    @FXML protected void onCreateAccountButtonClick() throws IOException
+    {
+        switchToCreateAccount();
+    }
+
+    @FXML private void switchToPage() throws IOException
+    {
+        FXMLLoader fxmlLoader = new FXMLLoader(LoginApplication.class.getResource("page-view.fxml"));
+        Stage stage = (Stage) passwordField.getScene().getWindow();
+        Scene scene = new Scene(fxmlLoader.load(), 420, 340);
+        stage.setTitle("Welcome");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML private void switchToCreateAccount() throws IOException
+    {
+        FXMLLoader fxmlLoader = new FXMLLoader(LoginApplication.class.getResource("create-account-view.fxml"));
+        Stage stage = (Stage) passwordField.getScene().getWindow();
+        Scene scene = new Scene(fxmlLoader.load(), 420, 340);
+        stage.setTitle("Create Account");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML public void setPrompts()
+    {
+        usernameField.setPromptText("Enter username");
+        passwordField.setPromptText("Enter password");
     }
 
     protected void clearPasswordField()
@@ -121,4 +145,66 @@ public class LoginController
         passwordField.setEditable(false);
     }
 
+    protected boolean queryUsername(String username)
+    {
+        return true;
+
+//        try
+//        {
+//            Connection connection = DriverManager.getConnection(serverURL, serverUsername, serverPassword);
+//            String usernameQuery = "SELECT * FROM users2;";
+//            var statement = connection.prepareStatement(usernameQuery);
+//            var results = statement.executeQuery();
+//
+//            while (results.next())
+//            {
+//                if (results.getString("Username").toLowerCase().equals(username))
+//                {
+//                    return true;
+//                }
+//            }
+//
+//            attempts--;
+//            return false;
+//        }
+//        catch (SQLException e)
+//        {
+//            throw new RuntimeException(e);
+//        }
+
+    }
+
+    protected boolean queryPassword(String username, String password)
+    {
+        return true;
+//        try
+//        {
+//            Connection connection = DriverManager.getConnection(serverURL, serverUsername, serverPassword);
+//            String usernameQuery = "SELECT * FROM users2;";
+//            var statement = connection.prepareStatement(usernameQuery);
+//            var results = statement.executeQuery();
+//
+//            while (results.next())
+//            {
+//                if (results.getString("Username").toLowerCase().equals(username))
+//                {
+//                    if (results.getString("Password").toLowerCase().equals(password))
+//                    {
+//                        return true;
+//                    }
+//
+//                    attempts--;
+//                    return false;
+//                }
+//            }
+//
+//            attempts--;
+//            return false;
+//        }
+//        catch (SQLException e)
+//        {
+//            throw new RuntimeException(e);
+//        }
+
+    }
 }

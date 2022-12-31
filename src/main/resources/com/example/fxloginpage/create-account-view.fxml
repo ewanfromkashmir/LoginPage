@@ -4,14 +4,15 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="com.example.fxloginpage.LoginController">
+<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="com.example.fxloginpage.CreateAccountController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
 
     <TextField fx:id="usernameField"/>
-    <PasswordField fx:id="passwordField"/>
-    <Button alignment="BOTTOM_CENTER" mnemonicParsing="false" text="Submit" onAction="#onSubmitButtonClick" />
+    <PasswordField fx:id="passwordField1"/>
+    <PasswordField fx:id="passwordField2"/>
+    <Button alignment="CENTER_LEFT" mnemonicParsing="false" text="Submit" onAction="#onSubmitButtonClick"/>
     <Button alignment="BOTTOM_LEFT" mnemonicParsing="false" text="Clear" onAction="#onClearButtonClick"/>
     <Button alignment="CENTER_RIGHT" mnemonicParsing="false" text="Cancel" onAction="#onCancelButtonClick" />
 </VBox>
