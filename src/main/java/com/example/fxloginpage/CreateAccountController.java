@@ -8,13 +8,21 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class CreateAccountController
 {
-
+    //Initialising TextField usernameField, and PasswordFields passwordField1 and passwordField2
     @FXML private TextField usernameField;
     @FXML private PasswordField passwordField1;
     @FXML private PasswordField passwordField2;
+
+    // Initialising server URL, username and password as variables for use when connecting to database
+    static String serverURL = "jdbc:sqlserver://SQL8002.site4now.net;database=db_a8cc79_Ewahes";
+    static String serverUsername = "db_a8cc79_Ewahes_admin";
+    static String serverPassword = "Fr43yX52kE71";
 
     @FXML protected void initialize()
     {
@@ -96,35 +104,45 @@ public class CreateAccountController
 
     protected boolean queryUsername(String username)
     {
-        return false;
+        try
+        {
+            Connection connection = DriverManager.getConnection(serverURL, serverUsername, serverPassword);
+            String usernameQuery = "SELECT * FROM users2;";
+            var statement = connection.prepareStatement(usernameQuery);
+            var results = statement.executeQuery();
 
-//        try
-//        {
-//            Connection connection = DriverManager.getConnection(serverURL, serverUsername, serverPassword);
-//            String usernameQuery = "SELECT * FROM users2;";
-//            var statement = connection.prepareStatement(usernameQuery);
-//            var results = statement.executeQuery();
-//
-//            while (results.next())
-//            {
-//                if (results.getString("Username").toLowerCase().equals(username))
-//                {
-//                    return true;
-//                }
-//            }
-//
-//            attempts--;
-//            return false;
-//        }
-//        catch (SQLException e)
-//        {
-//            throw new RuntimeException(e);
-//        }
+            while (results.next())
+            {
+                if (results.getString("Username").toLowerCase().equals(username))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+        catch (SQLException e)
+        {
+            throw new RuntimeException(e);
+        }
 
     }
 
     protected void createAccount(String username, String password)
     {
-        return;
+        try
+        {
+            Connection connection = DriverManager.getConnection(serverURL, serverUsername, serverPassword);
+            String createUserQuery = "INSERT INTO users2 (Username, UserPassword) VALUES (?, ?);";
+            var statement = connection.prepareStatement(createUserQuery);
+
+            statement.setObject(1, username);
+            statement.setObject(2, password);
+            statement.executeUpdate();
+
+        } catch (SQLException e)
+        {
+            throw new RuntimeException(e);
+        }
     }
 }

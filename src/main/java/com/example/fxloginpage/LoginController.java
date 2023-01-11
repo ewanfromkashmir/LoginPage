@@ -147,64 +147,60 @@ public class LoginController
 
     protected boolean queryUsername(String username)
     {
-        return true;
+        try
+        {
+            Connection connection = DriverManager.getConnection(serverURL, serverUsername, serverPassword);
+            String usernameQuery = "SELECT * FROM users2;";
+            var statement = connection.prepareStatement(usernameQuery);
+            var results = statement.executeQuery();
 
-//        try
-//        {
-//            Connection connection = DriverManager.getConnection(serverURL, serverUsername, serverPassword);
-//            String usernameQuery = "SELECT * FROM users2;";
-//            var statement = connection.prepareStatement(usernameQuery);
-//            var results = statement.executeQuery();
-//
-//            while (results.next())
-//            {
-//                if (results.getString("Username").toLowerCase().equals(username))
-//                {
-//                    return true;
-//                }
-//            }
-//
-//            attempts--;
-//            return false;
-//        }
-//        catch (SQLException e)
-//        {
-//            throw new RuntimeException(e);
-//        }
+            while (results.next())
+            {
+                if (results.getString("Username").toLowerCase().equals(username))
+                {
+                    return true;
+                }
+            }
 
+            attempts--;
+            return false;
+        }
+        catch (SQLException e)
+        {
+            throw new RuntimeException(e);
+        }
     }
 
     protected boolean queryPassword(String username, String password)
     {
-        return true;
-//        try
-//        {
-//            Connection connection = DriverManager.getConnection(serverURL, serverUsername, serverPassword);
-//            String usernameQuery = "SELECT * FROM users2;";
-//            var statement = connection.prepareStatement(usernameQuery);
-//            var results = statement.executeQuery();
-//
-//            while (results.next())
-//            {
-//                if (results.getString("Username").toLowerCase().equals(username))
-//                {
-//                    if (results.getString("Password").toLowerCase().equals(password))
-//                    {
-//                        return true;
-//                    }
-//
-//                    attempts--;
-//                    return false;
-//                }
-//            }
-//
-//            attempts--;
-//            return false;
-//        }
-//        catch (SQLException e)
-//        {
-//            throw new RuntimeException(e);
-//        }
+        try
+        {
+            Connection connection = DriverManager.getConnection(serverURL, serverUsername, serverPassword);
+            String usernameQuery = "SELECT * FROM users2;";
+            var statement = connection.prepareStatement(usernameQuery);
+            var results = statement.executeQuery();
+
+            while (results.next())
+            {
+                if (results.getString("Username").toLowerCase().equals(username))
+                {
+                    if (results.getString("UserPassword").equals(password))
+                    {
+                        return true;
+                    }
+
+                    attempts--;
+                    return false;
+                }
+            }
+
+            attempts--;
+            return false;
+        }
+        catch (SQLException e)
+        {
+            throw new RuntimeException(e);
+        }
 
     }
 }

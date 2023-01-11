@@ -4,16 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="62682286-04cf-4d66-a42e-9724769e1882" name="Changes" comment="Created additional functions for more clear and modular code.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/fxloginpage/CreateAccountController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/fxloginpage/PageController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/fxloginpage/create-account-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/fxloginpage/page-view.fxml" afterDir="false" />
+    <list default="true" id="62682286-04cf-4d66-a42e-9724769e1882" name="Changes" comment="Added a create account page which now has functionality minus the database side of things.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/fxloginpage/LoginApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/fxloginpage/LoginApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/fxloginpage/CreateAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/fxloginpage/CreateAccountController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/fxloginpage/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/fxloginpage/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/fxloginpage/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/fxloginpage/login-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,14 +36,22 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/ewanh/IdeaProjects/JFX/FXLoginPage",
+    "last_opened_file_path": "C:/Users/ewanh/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Scene Builder/SceneBuilder.lnk",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)"
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.JavaFX"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -66,7 +68,8 @@
       <workItem from="1670407070225" duration="27000" />
       <workItem from="1670861442531" duration="2647000" />
       <workItem from="1671467039020" duration="8554000" />
-      <workItem from="1672438728205" duration="6967000" />
+      <workItem from="1672438728205" duration="11711000" />
+      <workItem from="1673405790408" duration="1126000" />
     </task>
     <task id="LOCAL-00001" summary="Correctly implemented Cancel and Clear buttons to login page.">
       <created>1669903177092</created>
@@ -89,7 +92,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670373589572</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added a create account page which now has functionality minus the database side of things.">
+      <created>1672509105281</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1672509105281</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -110,6 +120,11 @@
     <MESSAGE value="Correctly implemented Cancel and Clear buttons to login page." />
     <MESSAGE value="Correctly implemented Submit button which can lock out the user if the incorrect credentials are entered too many times." />
     <MESSAGE value="Created additional functions for more clear and modular code." />
-    <option name="LAST_COMMIT_MESSAGE" value="Created additional functions for more clear and modular code." />
+    <MESSAGE value="Added a create account page which now has functionality minus the database side of things." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a create account page which now has functionality minus the database side of things." />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
